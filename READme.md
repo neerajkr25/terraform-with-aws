@@ -1,1 +1,1 @@
-This repo deploy the IaC with terraform
+This repo deploy the IaC with terraform in aws
