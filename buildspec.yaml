@@ -1,0 +1,24 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "Installing Terraform"
+      - curl -LO https://releases.hashicorp.com/terraform/1.4.0/terraform_1.4.0_linux_amd64.zip
+      - unzip terraform_1.4.0_linux_amd64.zip
+      - mv terraform /usr/local/bin/
+      - terraform -version
+  build: 
+    commands:
+      - echo "change the dir"
+      - cd ./live/dev/
+      - echo "Initializing Terraform"
+      - terraform init
+      # - echo "Planning Terraform changes in dev"
+      # - terraform plan
+      # - echo "Applying Terraform changes in dev"
+      # - terraform apply --auto-approve
+      - terraform destroy --auto-approve
+  post_build:
+    commands:
+      - echo "Deployment complete"
